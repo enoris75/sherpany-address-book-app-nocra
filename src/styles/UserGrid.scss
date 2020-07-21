@@ -1,0 +1,28 @@
+div#userGrid {
+  width: 100%;
+  margin-left: 105px;
+  height: calc(85vh);
+  #spinners {
+    z-index: 111;
+    position: fixed;
+    bottom: 50px;
+    .text {
+      font-weight: bolder;
+      position: absolute;
+      padding-left: 0em;
+      top: 4px;
+      left: 6em;
+      color: white;
+    }
+  }
+}
+.user-grid-catalog-end {
+  border-top-width: 1px;
+  border-top-color: darkgray;
+  border-top-style: dashed;
+  padding-top: 1em;
+  margin-top: 1em;
+  text-align: center;
+  font-weight: bold;
+  padding-bottom: 2em;
+}
