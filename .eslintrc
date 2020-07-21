@@ -1,0 +1,12 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["prettier"],
+  "rules": {
+    "linebreak-style": ["error", "windows"]
+  },
+  "globals": {
+    "document": true,
+    "foo": true,
+    "window": true
+  }
+}
