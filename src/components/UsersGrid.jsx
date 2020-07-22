@@ -29,20 +29,16 @@ class UsersGrid extends Component {
   /**
    * Data structure containing the uesers after the filter has been applied.
    */
-  fileredUsers = [];
+  filteredUsers = [];
   /**
    * Data structure containing the Users subdivided by row.
    */
   rowsOfUsers = {};
 
-  componentDidMount() {
-    document.addEventListener("scroll", this.detectScrollToTheBottom);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener("scroll", this.detectScrollToTheBottom);
-  }
-
+  /**
+   * Detects whether the screen has been scrolled down to contain the
+   * whole user grid element
+   */
   detectScrollToTheBottom = () => {
     const wrappedElement = document.getElementById(this.rootElementId);
     if (isBottomOfElementOnScreen(wrappedElement)) {
@@ -52,6 +48,14 @@ class UsersGrid extends Component {
     }
   };
 
+  componentDidMount() {
+    document.addEventListener("scroll", this.detectScrollToTheBottom);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.detectScrollToTheBottom);
+  }
+
   /**
    * Filter the users based on the given filter (if any).
    */
@@ -59,11 +63,11 @@ class UsersGrid extends Component {
     // Verify whether a filter has been set.
     if (!this.props.filter) {
       // No filter is set, pass all the users through.
-      this.fileredUsers = this.props.users;
+      this.filteredUsers = this.props.users;
       return;
     }
 
-    this.fileredUsers = this.props.users.filter((user) => {
+    this.filteredUsers = this.props.users.filter((user) => {
       return (
         user.name.first
           .toLowerCase()
@@ -78,12 +82,12 @@ class UsersGrid extends Component {
    */
   splitIntoRows() {
     this.rowsOfUsers = {};
-    for (let index = 0; index < this.fileredUsers.length; index++) {
+    for (let index = 0; index < this.filteredUsers.length; index++) {
       let row = Math.floor(index / NUMBER_OF_COLUMNS);
       if (!this.rowsOfUsers[row]) {
-        this.rowsOfUsers[row] = [this.fileredUsers[index]];
+        this.rowsOfUsers[row] = [this.filteredUsers[index]];
       } else {
-        this.rowsOfUsers[row].push(this.fileredUsers[index]);
+        this.rowsOfUsers[row].push(this.filteredUsers[index]);
       }
     }
   }
