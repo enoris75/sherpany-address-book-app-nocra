@@ -65,8 +65,8 @@
     "style-loader": "^1.2.1",
     "url-loader": "^4.1.0"
   },
-  "jest":{
-    "moduleNameMapper":{
+  "jest": {
+    "moduleNameMapper": {
       "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
       "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/__mocks__/fileMock.js"
     }

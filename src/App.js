@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import { store } from "./redux";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -9,10 +9,13 @@ import { Header, pages } from "./components/PageHeader";
 import { Settings } from "./components/SettingsPage";
 import { loadNextBatch } from "./services/UserService";
 
-// Load the first batch of users as the app starts
-loadNextBatch();
 
 function App() {
+  useEffect(() => {
+    // Load the first batch of users as the app starts
+    loadNextBatch();
+  })
+
   return (
     <Provider store={store}>
       <Router>
